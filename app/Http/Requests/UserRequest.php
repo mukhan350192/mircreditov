@@ -34,8 +34,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name.required' => 'Имя объязательно к заполнению',
-            'email' => 'Почта объязательно к заполнению',
-            'password' => 'Пароль объязательно к заполнению'
+            'email.required' => 'Почта объязательно к заполнению',
+            'password.required' => 'Пароль объязательно к заполнению'
         ];
     }
 }
