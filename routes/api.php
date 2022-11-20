@@ -28,7 +28,10 @@ Route::prefix('mk')->group(function(){
 
 Route::post('/addHistory',[ClientHistoryController::class,'addHistory']);
 Route::post('/addCompany',[CompanyController::class,'add']);
+Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::post('/deleteCompany',[CompanyController::class,'remove']);
 Route::get('/newClick',[ClickController::class,'newClick']);
 Route::post('/edit',[CompanyController::class,'edit']);
+Route::post('/showCompany',[CompanyController::class,'index']);
+

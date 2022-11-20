@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -56,5 +57,16 @@ class User extends Authenticatable
             return response()->success(['token' => $token]);
         }
         return response()->fail('Попробуйте позже');
+    }
+
+    public static function check(string $email,string $password){
+        $token = sha1(Str::random().time());
+        $user = User::where('email',$email)->first();
+        if (Hash::check($password,$user->password)){
+            $user->token = $token;
+            $user->save();
+            return response()->success(['token' => $token]);
+        }
+        return response()->fail('Не совпадает логин и пароль');
     }
 }

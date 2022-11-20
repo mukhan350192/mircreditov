@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckRequest;
 use App\Http\Requests\CompanyDeleteRequest;
 use App\Http\Requests\CompanyEditRequest;
 use App\Http\Requests\CompanyRequest;
+use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -44,6 +47,10 @@ class CompanyController extends Controller
 
     public function remove(CompanyDeleteRequest $request){
         return Company::remove($request->companyID);
+    }
+
+    public function index(CheckRequest $request){
+        return CompanyResource::collection(DB::table('company')->get());
     }
 
 }
