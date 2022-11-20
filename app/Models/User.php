@@ -65,7 +65,10 @@ class User extends Authenticatable
         if (Hash::check($password,$user->password)){
             $user->token = $token;
             $user->save();
-            return response()->success(['token' => $token]);
+            $data = [
+                'token' => $token,
+            ];
+            return response()->success($data);
         }
         return response()->fail('Не совпадает логин и пароль');
     }
