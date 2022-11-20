@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('success',function (array $data){
             return response()->json([
                'success' => true,
-                'data' => mb_convert_encoding($data, "UTF-8", "auto"),
+                'data' => $data,
                 'errorMessage' => null,
             ]);
         });
