@@ -13,7 +13,7 @@ class UserController extends Controller
         return User::create(
             $request->name,
             $request->email,
-            $request->password,
+            $request->password
         );
     }
 
