@@ -24,6 +24,7 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
+            'token' => 'required|string|exists:users,token',
             'name' => 'required|string',
             'logo' => 'required|file',
             'max_amount' => 'required|int',
@@ -38,6 +39,7 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
+            'token.required' => 'Токен должно быть заполнено',
             'name.required' => 'Имя должно быть заполнено',
             'logo.required' => 'Файл нужно загрузить',
             'max_amount.required' => 'Максимальная сумма нужно заполнить',

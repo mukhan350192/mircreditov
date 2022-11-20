@@ -45,14 +45,15 @@ class User extends Authenticatable
 
     public static function create(string $name, string $email, string $password)
     {
+        $token = sha1(Str::random().time());
         $userID = User::query()->insertGetId([
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password),
-            'token' => sha1(Str::random().time())
+            'token' => $token,
         ]);
         if ($userID) {
-            return response()->success([]);
+            return response()->success(['token' => $token]);
         }
         return response()->fail('Попробуйте позже');
     }

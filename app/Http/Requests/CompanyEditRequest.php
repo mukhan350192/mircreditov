@@ -24,6 +24,7 @@ class CompanyEditRequest extends FormRequest
     public function rules()
     {
         return [
+            'token' => 'required|string|exists:users,token',
             'companyID' => 'required|integer|exists:company,id',
             'name' => 'required|string',
             'max_amount' => 'required|integer',
