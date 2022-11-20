@@ -33,5 +33,5 @@ Route::post('/login',[UserController::class,'login']);
 Route::post('/deleteCompany',[CompanyController::class,'remove']);
 Route::get('/newClick',[ClickController::class,'newClick']);
 Route::post('/edit',[CompanyController::class,'edit']);
-Route::post('/showCompany',[CompanyController::class,'index']);
+Route::get('/showCompany',[CompanyController::class,'index']);
 
