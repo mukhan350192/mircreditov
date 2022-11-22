@@ -24,7 +24,14 @@ class CheckRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|users,token'
+            'token' => 'required|string|exists:users,token'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'token.required' => 'Токен должно быть заполнено'
         ];
     }
 }
