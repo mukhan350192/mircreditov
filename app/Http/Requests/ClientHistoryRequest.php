@@ -6,9 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ClientHistoryRequest extends FormRequest
 {
-    public string $token;
-    public string $phone;
-    public string $action;
     /**
      * Determine if the user is authorized to make this request.
      *
