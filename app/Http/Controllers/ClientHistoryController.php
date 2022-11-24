@@ -13,7 +13,13 @@ class ClientHistoryController extends Controller
         return ClientHistory::create(
             $request->token,
             $request->phone,
-            $request->action
+            $request->action,
+            $request->utm_source,
+            $request->utm_content,
+            $request->utm_medium,
+            $request->utm_term,
+            $request->utm_campaign,
+            $request->web_id
         );
     }
 }

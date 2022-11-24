@@ -18,6 +18,13 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->text('action');
             $table->string('token');
+            $table->string('token');
+            $table->string('utm_source')->nullable();
+            $table->string('utm_content')->nullable();
+            $table->string('utm_medium')->nullable();
+            $table->string('utm_term')->nullable();
+            $table->string('utm_campaign')->nullable();
+            $table->string('web_id')->nullable();
             $table->timestamps();
         });
     }
