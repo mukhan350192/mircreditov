@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->text('action');
             $table->string('token');
-            $table->string('token');
             $table->string('utm_source')->nullable();
             $table->string('utm_content')->nullable();
             $table->string('utm_medium')->nullable();
