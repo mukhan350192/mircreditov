@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckRequest;
 use App\Http\Requests\NewsEditRequest;
 use App\Http\Requests\NewsRemoveRequest;
 use App\Http\Requests\NewsRequest;
+use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -21,5 +23,9 @@ class NewsController extends Controller
 
     public function edit(NewsEditRequest $request){
         return News::edit($request->newsID,$request->title,$request->mini_description,$request->description);
+    }
+
+    public function show(CheckRequest $request){
+        return NewsResource::collection(News::all());
     }
 }

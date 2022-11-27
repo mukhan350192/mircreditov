@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClickController;
 use App\Http\Controllers\ClientHistoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PostbackController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -34,4 +35,11 @@ Route::post('/deleteCompany',[CompanyController::class,'remove']);
 Route::get('/newClick',[ClickController::class,'newClick']);
 Route::post('/edit',[CompanyController::class,'edit']);
 Route::get('/showCompany',[CompanyController::class,'index']);
+
+Route::prefix('news')->group(function(){
+    Route::post('create',[NewsController::class,'create']);
+    Route::post('remove',[NewsController::class,'remove']);
+    Route::post('edit',[NewsController::class,'edit']);
+    Route::get('show',[NewsController::class,'show']);
+});
 
