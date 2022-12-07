@@ -56,7 +56,19 @@ class Company extends Model
         $logo->move(public_path('/company'),$imageName);
 
         if ($companyID){
-            return response()->success([]);
+            return response()->success([
+                'name' => $name,
+                'priority' => $priority,
+                'max_amount' => $max_amount,
+                'age_min' => $age_min,
+                'age_max' => $age_max,
+                'consideration_period' => $period,
+                'period_min' => $period_min,
+                'period_max' => $period_max,
+                'amount_deal' => $amount_deal,
+                'amount_lead' => $amount_lead,
+                'id' => $companyID,
+            ]);
         }
         return response()->fail('af');
     }
@@ -96,19 +108,7 @@ class Company extends Model
         ]);
 
         if ($update){
-            return response()->success([
-                'name' => $name,
-                'priority' => $priority,
-                'max_amount' => $max_amount,
-                'age_min' => $age_min,
-                'age_max' => $age_max,
-                'consideration_period' => $consideration_period,
-                'period_min' => $period_min,
-                'period_max' => $period_max,
-                'amount_deal' => $amount_deal,
-                'amount_lead' => $amount_lead,
-                'id' => $update,
-            ]);
+            return response()->success([]);
         }
         return response()->fail('Попробуйте позже');
     }
