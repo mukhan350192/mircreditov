@@ -94,8 +94,21 @@ class Company extends Model
             'amount_deal' => $amount_deal,
             'amount_lead' => $amount_lead,
         ]);
+
         if ($update){
-            return response()->success([]);
+            return response()->success([
+                'name' => $name,
+                'priority' => $priority,
+                'max_amount' => $max_amount,
+                'age_min' => $age_min,
+                'age_max' => $age_max,
+                'consideration_period' => $consideration_period,
+                'period_min' => $period_min,
+                'period_max' => $period_max,
+                'amount_deal' => $amount_deal,
+                'amount_lead' => $amount_lead,
+                'id' => $update,
+            ]);
         }
         return response()->fail('Попробуйте позже');
     }
