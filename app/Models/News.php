@@ -33,7 +33,7 @@ class News extends Model
         ]);
     }
 
-    public function remove(int $newsID){
+    public static function remove(int $newsID){
         $delete = News::where('id',$newsID)->delete();
         if (!$delete){
             return response()->fail('Попробуйте позже');
@@ -41,7 +41,7 @@ class News extends Model
         return response()->success([]);
     }
 
-    public function edit(int $newsID,string $title,string $mini,string $description){
+    public static function edit(int $newsID,string $title,string $mini,string $description){
         $news = News::where('id',$newsID)->update([
             'title' => $title,
             'mini_description' => $mini,
