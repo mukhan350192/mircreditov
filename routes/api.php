@@ -44,3 +44,5 @@ Route::prefix('news')->group(function(){
     Route::get('show',[NewsController::class,'show']);
 });
 
+
+Route::get('/offers',[CompanyController::class,'offers']);

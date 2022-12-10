@@ -8,8 +8,10 @@ use App\Http\Requests\CompanyEditRequest;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
+use App\Services\OfferService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class CompanyController extends Controller
 {
@@ -53,4 +55,8 @@ class CompanyController extends Controller
         return CompanyResource::collection(DB::table('company')->get());
     }
 
+    public function offers(){
+        $offer = new OfferService();
+        return $offer->showOffers();
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class Company extends Model
@@ -56,6 +58,11 @@ class Company extends Model
         $logo->move(public_path('/company'),$imageName);
 
         if ($companyID){
+            DB::table('company_epc')->insertGetId([
+                'company_id' => $companyID,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
             return response()->success([
                 'name' => $name,
                 'priority' => $priority,
