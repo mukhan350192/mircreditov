@@ -101,7 +101,8 @@ class Company extends Model
         int $period_min,
         int $period_max,
         int|null $amount_deal,
-        int|null $amount_lead
+        int|null $amount_lead,
+        string $link
     ){
         $update = Company::where('id',$companyID)->update([
            'name' => $name,
@@ -114,6 +115,7 @@ class Company extends Model
             'period_max' => $period_max,
             'amount_deal' => $amount_deal,
             'amount_lead' => $amount_lead,
+            'link' => $link
         ]);
 
         if ($update){
