@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('company_epc', function (Blueprint $table) {
             $table->id();
-            $table->index('company_id');
             $table->integer('click_count')->default(0);
             $table->double('amount')->default(0);
             $table->double('epc')->default(0);
             $table->timestamps();
-            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->references('id')->on('company')->onDelete('cascade');
         });
     }
 
