@@ -39,6 +39,7 @@ class Company extends Model
         int $period_max,
         int|null $amount_deal,
         int|null $amount_lead,
+        string $link
     ){
         $imageName = sha1(Str::random(16).time()).'.'.$logo->getClientOriginalExtension();
         $companyID = Company::query()->insertGetId([
@@ -51,6 +52,7 @@ class Company extends Model
             'consideration_period' => $period,
             'period_min' => $period_min,
             'period_max' => $period_max,
+            'link' => $link,
             'amount_deal' => $amount_deal,
             'amount_lead' => $amount_lead,
         ]);

@@ -27,7 +27,8 @@ class CompanyController extends Controller
             $request->period_min,
             $request->period_max,
             $request->amount_deal,
-            $request->amount_lead
+            $request->amount_lead,
+            $request->link
         );
     }
 
