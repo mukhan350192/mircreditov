@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('amount')->default(0);
             $table->double('epc')->default(0);
             $table->timestamps();
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
         });
     }
 
