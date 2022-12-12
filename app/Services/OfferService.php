@@ -8,6 +8,9 @@ class OfferService{
     public function showOffers(){
         $companyID = DB::table('company_epc')->select('company_id')->orderByDesc('epc')->get();
         $data = [];
+        if (!$companyID){
+            return response()->success([]);
+        }
         foreach ($companyID as $id){
             $data[] = $id->company_id;
         }
