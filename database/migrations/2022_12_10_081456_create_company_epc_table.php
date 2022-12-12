@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('company_epc', function (Blueprint $table) {
             $table->id();
-            $table->integer('company_id');
+            $table->index('company_id');
             $table->integer('click_count')->default(0);
             $table->double('amount')->default(0);
             $table->double('epc')->default(0);
