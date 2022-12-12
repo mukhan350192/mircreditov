@@ -76,6 +76,7 @@ class Company extends Model
                 'period_max' => $period_max,
                 'amount_deal' => $amount_deal,
                 'amount_lead' => $amount_lead,
+                'link' => $link,
                 'id' => $companyID,
             ]);
         }
