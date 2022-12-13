@@ -27,6 +27,7 @@ class CompanyResource extends JsonResource
             'amount_deal' => $this->amount_deal,
             'amount_lead' => $this->amount_lead,
             'logo' => $this->logo,
+            'link' => $this->link,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
