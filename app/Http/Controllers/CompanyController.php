@@ -57,8 +57,8 @@ class CompanyController extends Controller
         return CompanyResource::collection(DB::table('company')->get());
     }
 
-    public function offers(){
+    public function offers(Request $request){
         $offer = new OfferService();
-        return $offer->showOffers();
+        return $offer->showOffers($request->phone);
     }
 }

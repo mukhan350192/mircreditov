@@ -17,7 +17,7 @@ class CompanyResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'logo' => $this->priority,
+            'priority' => $this->priority,
             'max_amount' => $this->max_amount,
             'age_min' => $this->age_min,
             'age_max' => $this->age_max,
@@ -26,6 +26,7 @@ class CompanyResource extends JsonResource
             'period_max' => $this->period_max,
             'amount_deal' => $this->amount_deal,
             'amount_lead' => $this->amount_lead,
+            'logo' => $this->logo,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

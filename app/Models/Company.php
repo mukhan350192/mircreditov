@@ -65,6 +65,7 @@ class Company extends Model
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
+
             return response()->success([
                 'name' => $name,
                 'priority' => $priority,
