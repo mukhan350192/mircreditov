@@ -33,7 +33,7 @@ Route::post('/addCompany',[CompanyController::class,'add']);
 Route::post('/register',[UserController::class,'register']);
 Route::post('/login',[UserController::class,'login']);
 Route::post('/deleteCompany',[CompanyController::class,'remove']);
-Route::get('/newClick',[ClickController::class,'newClick']);
+Route::post('/newClick',[ClickController::class,'newClick']);
 Route::post('/edit',[CompanyController::class,'edit']);
 Route::get('/showCompany',[CompanyController::class,'index']);
 Route::get('/device',[DeviceController::class,'device']);
