@@ -46,3 +46,4 @@ Route::prefix('news')->group(function(){
 
 
 Route::get('/offers',[CompanyController::class,'offers']);
+Route::post('/addContact',[UserController::class,'addContact']);
