@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -44,31 +45,36 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function create(string $name, string $email, string $password)
+    /**
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     * @return JsonResponse
+     */
+    public static function create(string $name, string $email, string $password): JsonResponse
     {
-        $token = sha1(Str::random().time());
-        $userID = User::query()->insertGetId([
+        $user = self::query()->create([
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password),
-            'token' => $token,
         ]);
-        if ($userID) {
-            return response()->success(['token' => $token]);
-        }
-        return response()->fail('Попробуйте позже');
+        $token = $user->createToken('api', ['admin'])->plainTextToken;
+
+        return response()->success(['token' => $token]);
     }
 
-    public static function check(string $email,string $password){
-        $token = sha1(Str::random().time());
-        $user = User::where('email',$email)->first();
-        if (Hash::check($password,$user->password)){
-            $user->token = $token;
-            $user->save();
-            $data = [
-                'token' => $token,
-            ];
-            return response()->success($data);
+    /**
+     * @param string $email
+     * @param string $password
+     * @return JsonResponse
+     */
+
+    public static function check(string $email, string $password)
+    {
+        $user = User::where('email', $email)->first();
+        if (Hash::check($password, $user->password)) {
+            $token = $user->createToken('api', ['admin'])->plainTextToken;
+            return response()->success(['token' => $token]);
         }
         return response()->fail('Не совпадает логин и пароль');
     }

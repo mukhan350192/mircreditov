@@ -4,6 +4,21 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $companyID int
+ * @property $name string
+ * @property $priority integer
+ * @property $max_amount int
+ * @property $age_min int
+ * @property $age_max int
+ * @property $consideration_period int
+ * @property $period_min int
+ * @property $period_max int
+ * @property $amount_deal int
+ * @property $amount_lead int
+ * @property $link string
+ */
+
 class CompanyEditRequest extends FormRequest
 {
     /**
@@ -24,7 +39,6 @@ class CompanyEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|exists:users,token',
             'companyID' => 'required|integer|exists:company,id',
             'name' => 'required|string',
             'max_amount' => 'required|integer',

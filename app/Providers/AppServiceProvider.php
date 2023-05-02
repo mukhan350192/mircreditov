@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,20 +25,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro('success',function (array $data){
-            return response()->json([
-               'success' => true,
-                'data' => $data,
-                'errorMessage' => null,
-            ]);
+        Response::macro('success', function (array $data = []): JsonResponse {
+            return response()->json(array_merge($data, [
+                'success' => true,
+            ]));
         });
 
-        Response::macro('fail',function (string $message){
-            return response()->json([
+        Response::macro('fail', function (string $message, array $data = []): JsonResponse {
+            return response()->json(array_merge($data, [
                 'success' => false,
-                'data' => null,
-                'errorMessage' => mb_convert_encoding($message, "UTF-8", "auto"),
-            ]);
+                'error' => $message,
+            ]));
         });
     }
 }

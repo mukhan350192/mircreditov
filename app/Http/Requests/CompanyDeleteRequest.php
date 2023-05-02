@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $companyID int
+ */
 class CompanyDeleteRequest extends FormRequest
 {
     /**
@@ -24,7 +27,6 @@ class CompanyDeleteRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|exists:users,token',
             'companyID' => 'required|integer|exists:company,id'
         ];
     }

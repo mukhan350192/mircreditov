@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $newsID integer
+ */
 class NewsRemoveRequest extends FormRequest
 {
     /**

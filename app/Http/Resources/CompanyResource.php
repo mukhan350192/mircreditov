@@ -4,8 +4,27 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property $id int
+ * @property $name string
+ * @property $priority int
+ * @property $max_amount int
+ * @property $age_min int
+ * @property $age_max int
+ * @property $consideration_period int
+ * @property $period_min int
+ * @property $period_max int
+ * @property $amount_deal int
+ * @property $amount_lead int
+ * @property $link string
+ * @property $logo string
+ * @property $created_at string
+ * @property $updated_at string
+ */
 class CompanyResource extends JsonResource
 {
+
+
     /**
      * Transform the resource into an array.
      *

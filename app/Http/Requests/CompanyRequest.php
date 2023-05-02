@@ -4,6 +4,21 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $name string
+ * @property $logo
+ * @property $priority integer
+ * @property $max_amount int
+ * @property $age_min int
+ * @property $age_max int
+ * @property $consideration_period int
+ * @property $period_min int
+ * @property $period_max int
+ * @property $amount_deal int
+ * @property $amount_lead int
+ * @property $link string
+ */
+
 class CompanyRequest extends FormRequest
 {
     /**
@@ -24,7 +39,6 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|exists:users,token',
             'name' => 'required|string',
             'logo' => 'required|file',
             'max_amount' => 'required|int',
@@ -39,7 +53,6 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'token.required' => 'Токен должно быть заполнено',
             'name.required' => 'Имя должно быть заполнено',
             'logo.required' => 'Файл нужно загрузить',
             'max_amount.required' => 'Максимальная сумма нужно заполнить',
@@ -47,7 +60,7 @@ class CompanyRequest extends FormRequest
             'age_max.required' => 'Максимальная возраст нужно заполнить',
             'consideration_period.required' => 'Время рассмотрение нужно заполнить',
             'period_min.required' => 'Минимальная срок надо заполнить',
-            'period_max.required' => 'Максимальну№ срок надо заполнить'
+            'period_max.required' => 'Максимальную срок надо заполнить'
         ];
     }
 }

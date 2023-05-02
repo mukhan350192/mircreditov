@@ -4,6 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $title string
+ * @property $mini_description string
+ * @property $description string
+ */
+
 class NewsRequest extends FormRequest
 {
     /**
@@ -24,7 +30,6 @@ class NewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|exists:users,token',
             'title' => 'required|string',
             'mini_description' => 'required|string',
             'description' => 'required|string',
@@ -34,7 +39,6 @@ class NewsRequest extends FormRequest
     public function messages()
     {
         return [
-            'token.required' => 'Токен должно быть заполнено',
             'title.required' => 'Титуль должно быть заполнено',
             'mini_description' => 'Мини описание должно быть заполнено',
             'description' => 'Описание должно быть заполнено',

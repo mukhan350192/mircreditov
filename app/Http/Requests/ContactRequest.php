@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $phone string
+ * @property $email string
+ */
+
 class ContactRequest extends FormRequest
 {
     /**

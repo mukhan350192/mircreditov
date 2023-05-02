@@ -4,6 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $newsID integer
+ * @property $title string
+ * @property $mini_description string
+ * @property $description string
+ */
+
 class NewsEditRequest extends FormRequest
 {
     /**

@@ -8,24 +8,43 @@ use App\Http\Requests\NewsRemoveRequest;
 use App\Http\Requests\NewsRequest;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function create(NewsRequest $request)
+    /**
+     * @param NewsRequest $request
+     * @return JsonResponse
+     */
+    public function create(NewsRequest $request): JsonResponse
     {
         return News::create($request->title, $request->mini_description, $request->description);
     }
 
-    public function remove(NewsRemoveRequest $request){
+    /**
+     * @param NewsRemoveRequest $request
+     * @return JsonResponse
+     */
+    public function remove(NewsRemoveRequest $request): JsonResponse
+    {
         return News::remove($request->newsID);
     }
 
-    public function edit(NewsEditRequest $request){
-        return News::edit($request->newsID,$request->title,$request->mini_description,$request->description);
+    /**
+     * @param NewsEditRequest $request
+     * @return JsonResponse
+     */
+    public function edit(NewsEditRequest $request): JsonResponse
+    {
+        return News::edit($request->newsID, $request->title, $request->mini_description, $request->description);
     }
 
-    public function show(CheckRequest $request){
-        return NewsResource::collection(News::all());
+    /**
+     * @return JsonResponse
+     */
+    public function show(): JsonResponse
+    {
+        return response()->success(NewsResource::collection(News::all()));
     }
 }

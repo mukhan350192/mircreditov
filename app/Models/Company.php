@@ -42,7 +42,7 @@ class Company extends Model
         string $link
     ){
         $imageName = sha1(Str::random(16).time()).'.'.$logo->getClientOriginalExtension();
-        $companyID = Company::query()->insertGetId([
+        $data = [
             'name' => $name,
             'logo' => $imageName,
             'priority' => !$priority?:0,
@@ -55,7 +55,8 @@ class Company extends Model
             'link' => $link,
             'amount_deal' => $amount_deal,
             'amount_lead' => $amount_lead,
-        ]);
+        ];
+        $companyID = Company::query()->insertGetId($data);
 
         $logo->move(public_path('/company'),$imageName);
 
@@ -81,15 +82,12 @@ class Company extends Model
                 'id' => $companyID,
             ]);
         }
-        return response()->fail('af');
+        return response()->fail('');
     }
 
     public static function remove(int $companyID){
         $result = Company::where('id',$companyID)->delete();
-        if ($result){
-            return response()->success([]);
-        }
-        return response()->fail('Попробуйте позже');
+        return response()->success();
     }
 
     public static function edit(

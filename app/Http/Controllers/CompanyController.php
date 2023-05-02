@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CheckRequest;
 use App\Http\Requests\CompanyDeleteRequest;
 use App\Http\Requests\CompanyEditRequest;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use App\Services\OfferService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
 class CompanyController extends Controller
 {
-    public function add(CompanyRequest $request){
+    /**
+     * @param CompanyRequest $request
+     * @return JsonResponse
+     */
+    //create unit test for this method
+    public function add(CompanyRequest $request):JsonResponse
+    {
         return Company::create(
             $request->name,
             $request->file('logo'),
@@ -32,7 +38,12 @@ class CompanyController extends Controller
         );
     }
 
-    public function edit(CompanyEditRequest $request){
+    /**
+     * @param CompanyEditRequest $request
+     * @return JsonResponse
+     */
+    public function edit(CompanyEditRequest $request): JsonResponse
+    {
         return Company::edit(
             $request->companyID,
             $request->name,
@@ -49,15 +60,25 @@ class CompanyController extends Controller
         );
     }
 
-    public function remove(CompanyDeleteRequest $request){
+    /**
+     * @param CompanyDeleteRequest $request
+     * @return JsonResponse
+     */
+    public function remove(CompanyDeleteRequest $request): JsonResponse
+    {
         return Company::remove($request->companyID);
     }
 
-    public function index(CheckRequest $request){
-        return CompanyResource::collection(DB::table('company')->get());
+    /**
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
+    {
+        return response()->success(CompanyResource::collection(DB::table('company')->get()));
     }
 
-    public function offers(Request $request){
+    public function offers(Request $request)
+    {
         $offer = new OfferService();
         return $offer->showOffers($request->phone);
     }

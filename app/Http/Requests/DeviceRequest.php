@@ -4,6 +4,13 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property $token string
+ * @property $ip string
+ * @property $city string
+ * @property $device string
+ */
+
 class DeviceRequest extends FormRequest
 {
     /**
