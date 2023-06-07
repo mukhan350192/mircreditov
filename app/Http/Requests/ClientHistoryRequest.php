@@ -4,6 +4,18 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $token
+ * @property string $action
+ * @property string $phone
+ * @property string $utm_source
+ * @property string $utm_content
+ * @property string $utm_medium
+ * @property string $utm_term
+ * @property string $utm_campaign
+ * @property string $web_id
+ */
+
 class ClientHistoryRequest extends FormRequest
 {
     /**

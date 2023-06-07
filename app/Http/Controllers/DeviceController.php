@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DeviceRequest;
 use App\Models\Device;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+
 
 class DeviceController extends Controller
 {
-    public function device(DeviceRequest $request){
+    /**
+     * @param DeviceRequest $request
+     * @return JsonResponse
+     */
+    public function device(DeviceRequest $request): JsonResponse{
         return Device::create(
            $request->device,
            $request->token,

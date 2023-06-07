@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientHistoryRequest;
 use App\Models\ClientHistory;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class ClientHistoryController extends Controller
 {
-    public function addHistory(ClientHistoryRequest $request)
+    /**
+     * @param ClientHistoryRequest $request
+     * @return JsonResponse
+     */
+    public function addHistory(ClientHistoryRequest $request):JsonResponse
     {
         return ClientHistory::create(
             $request->token,

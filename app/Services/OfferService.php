@@ -1,21 +1,26 @@
 <?php
+
 namespace App\Services;
+
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
 use GuzzleHttp\Client;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
-class OfferService{
+class OfferService
+{
     /**
      * @param string $phone
-     * @return array
+     * @return JsonResponse
      */
-    public function showOffers(string $phone){
+    public function showOffers(string $phone): JsonResponse
+    {
         $companyID = DB::table('company_epc')
-                ->join('company','company_epc.company_id','=','company.id')
-                ->select('company.*')
-                ->orderByDesc('epc')
-                ->get();
+            ->join('company', 'company_epc.company_id', '=', 'company.id')
+            ->select('company.*')
+            ->orderByDesc('epc')
+            ->get();
 
         /*
         $http = new Client(['verify' => false]);

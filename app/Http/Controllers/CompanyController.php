@@ -74,10 +74,14 @@ class CompanyController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->success(CompanyResource::collection(DB::table('company')->get()));
+        return response()->success((array)CompanyResource::collection(DB::table('company')->get()));
     }
 
-    public function offers(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function offers(Request $request): JsonResponse
     {
         $offer = new OfferService();
         return $offer->showOffers($request->phone);

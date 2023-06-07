@@ -4,6 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property string $phone
+ * @property string $clickID
+ * @property int $companyID
+ */
+
 class ClickRequest extends FormRequest
 {
     /**

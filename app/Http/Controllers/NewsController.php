@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CheckRequest;
 use App\Http\Requests\NewsEditRequest;
 use App\Http\Requests\NewsRemoveRequest;
 use App\Http\Requests\NewsRequest;
-use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+
 
 class NewsController extends Controller
 {
@@ -45,6 +43,6 @@ class NewsController extends Controller
      */
     public function show(): JsonResponse
     {
-        return response()->success(NewsResource::collection(News::all()));
+        return response()->success(News::all());
     }
 }

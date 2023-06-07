@@ -11,8 +11,9 @@ class OfferController extends Controller
     /**
      * @param Request $request
      * @param OfferService $service
+     * @return JsonResponse
      */
-    public function getOffer(Request $request, OfferService $service){
+    public function getOffer(Request $request, OfferService $service): JsonResponse{
         return $service->showOffers($request->phone);
     }
 }
