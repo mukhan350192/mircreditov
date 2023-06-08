@@ -14,7 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $addHttpCookie = true;
 
     protected $except = [
-        'api/admin/*',
-        'api/login',
+        'https://back.mircreditov.kz/api/admin/*',
+        'https://back.mircreditov.kz/api/login',
     ];
 }
