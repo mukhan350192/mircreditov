@@ -53,7 +53,7 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Имя должно быть заполнено',
+            'name' => 'Имя должно быть заполнено',
             'logo.required' => 'Файл нужно загрузить',
             'max_amount.required' => 'Максимальная сумма нужно заполнить',
             'age_min.required' => 'Минимальная возраст нужно заполнить',
