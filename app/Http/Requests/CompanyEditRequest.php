@@ -47,6 +47,7 @@ class CompanyEditRequest extends FormRequest
             'consideration_period' => 'required|integer',
             'period_min' => 'required|integer',
             'period_max' => 'required|integer',
+            'link' => 'required|string'
         ];
     }
 
@@ -60,6 +61,7 @@ class CompanyEditRequest extends FormRequest
             'consideration_period' => 'Время рассмотрение нужно объязательно заполнить',
             'period_min' => 'Минимальный срок нужно объязательно заполнить',
             'period_max' => 'Максимальный срок нужно объязательно заполнить',
+            'link.required' => 'Ссылку нужно объязательно заполнить',
         ];
     }
 }
