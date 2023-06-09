@@ -74,7 +74,11 @@ class CompanyController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->success((array)CompanyResource::collection(DB::table('company')->get()));
+        $data = [
+            'baseURL' => 'https://back.mircreditov.kz/company/',
+            'data' => CompanyResource::collection(DB::table('company')->get()),
+        ];
+        return response()->success($data);
     }
 
     /**
