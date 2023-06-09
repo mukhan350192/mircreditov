@@ -22,6 +22,7 @@ class CompanyController extends Controller
     //create unit test for this method
     public function add(CompanyRequest $request):JsonResponse
     {
+        print_r($request->all());
         return Company::create(
             $request->name,
             $request->file('logo'),
