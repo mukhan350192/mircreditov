@@ -20,7 +20,7 @@ class CompanyController extends Controller
      * @return JsonResponse
      */
     //create unit test for this method
-    public function add(Request $request):JsonResponse
+    public function add(Request $request)
     {
         dd($request->all());
         return Company::create(
