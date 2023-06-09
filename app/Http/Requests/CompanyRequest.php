@@ -38,6 +38,7 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
+        dd($this->all());
         return [
             'name' => 'required|string',
             'logo' => 'required|file',
