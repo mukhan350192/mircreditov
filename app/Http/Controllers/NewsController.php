@@ -47,7 +47,7 @@ class NewsController extends Controller
         $news = News::where('id','>',0)->get();
         $data = [];
         foreach ($news as $new){
-            $data[] = [
+            $data['data'] = [
                 'id' => $new->id,
                 'title' => $new->title,
                 'mini_description' => $new->mini_description,
