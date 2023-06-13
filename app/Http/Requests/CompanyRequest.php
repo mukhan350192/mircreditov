@@ -38,8 +38,6 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-
-        if (!$this->isMethod('OPTIONS'))  dd($this->all());
         return [
             'name' => 'required|string',
             'logo' => 'required|file',
