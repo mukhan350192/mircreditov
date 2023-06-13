@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NewsEditRequest;
 use App\Http\Requests\NewsRemoveRequest;
 use App\Http\Requests\NewsRequest;
+use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Illuminate\Http\JsonResponse;
 
@@ -43,6 +44,6 @@ class NewsController extends Controller
      */
     public function show(): JsonResponse
     {
-        return response()->success(News::where('id','>',0)->get());
+        return response()->success((array)NewsResource::collection(News::all()));
     }
 }
