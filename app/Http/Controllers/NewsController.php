@@ -44,8 +44,18 @@ class NewsController extends Controller
      */
     public function show(): JsonResponse
     {
-        $data = News::where('id','>',0)->get();
-
-        return response()->success(NewsResource::collection($data));
+        $news = News::where('id','>',0)->get();
+        $data = [];
+        foreach ($news as $new){
+            $data[] = [
+                'id' => $new->id,
+                'title' => $new->title,
+                'mini_description' => $new->mini_description,
+                'description' => $new->description,
+                'created_at' => $new->created_at,
+                'updated_at' => $new->updated_at,
+            ];
+        }
+        return response()->success($data);
     }
 }
