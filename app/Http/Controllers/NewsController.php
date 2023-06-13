@@ -56,6 +56,6 @@ class NewsController extends Controller
                 'updated_at' => $new->updated_at,
             ];
         }
-        return response()->success($data);
+        return response()->success((array)json_encode($data, true));
     }
 }
